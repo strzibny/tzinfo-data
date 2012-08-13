@@ -1,0 +1,49 @@
+= TZInfo-Data -- Cross-platform database for timezone library tzinfo
+
+TZInfo-Data[http://tzinfo-data.rubyforge.org] uses the tz database 
+(http://www.twinsun.com/tz/tz-link.htm) to provide daylight-savings
+aware transformations between times in different timezones for tzinfo.
+
+The tz database has been imported (using TZDataParser) and turned into a set of
+Ruby modules (which are packaged with this release).
+
+== Example usage
+
+This database (once installed) will be used automatically with tzinfo library
+if zoneinfo database is not installed on your machine. This shouldn't be necessary
+on UNIX-like machines that usually come with preinstalled zoneinfo.
+
+
+== Download
+
+The latest version of TZInfo-Data can be found at
+
+* 
+
+API documentation can be found at 
+
+* 
+
+
+== Installation
+
+The preferred method of installing TZInfo-Data is through the GEM file (RubyGems[http://docs.rubygems.org/] required):
+
+  % gem install tzinfo-data-x.y.z.gem
+  
+or to automatically download and install:
+
+  % gem install tzinfo-data --remote
+  
+
+== License
+
+TZInfo-Data is released under the MIT[http://opensource.org/licenses/mit-license.html] license.
+
+
+== Support
+
+Please post to the TZInfo Users mailing list (http://rubyforge.org/mailman/listinfo/tzinfo-users)
+if you require assistance or have any suggestions.
+
+Alternatively, you can contact the author Philip Ross directly at phil.ross@gmail.com.
