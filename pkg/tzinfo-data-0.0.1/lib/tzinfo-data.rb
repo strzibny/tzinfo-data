@@ -18,7 +18,11 @@ module TZInfo
 	  # Loads offsets and transitions for given timezone
 	  def load_definition(identifier)
 		file = 'definitions' + File::SEPARATOR + identifier
-		require file
+		begin
+			require file
+		rescue LoadError
+			raise InvalidTimezoneIdentifier, 'Invalid identifier'
+		end
 	  end
 	end
   end

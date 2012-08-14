@@ -25,7 +25,8 @@ PKG_FILES = FileList[
   'README',
   'doc/**/*',
   'lib/**/*',
-  'data/**/*'
+  'data/**/*',
+  'test/*'
 ]
 
 RDOC_OPTIONS = %w[--exclude definitions --exclude indexes]
@@ -49,6 +50,16 @@ SPEC = Gem::Specification.new do |s|
   s.extra_rdoc_files = RDOC_EXTRA_FILES
   s.rdoc_options = RDOC_OPTIONS
   s.rubyforge_project = "tzinfo-data"
+end
+
+Rake::TestTask.new('test') do |t|
+  # Force a particular timezone to be local (helps find issues when local
+  # timezone isn't GMT). This won't work on Windows.
+  ENV['TZ'] = 'America/Los_Angeles'
+
+  t.libs << 'test'
+  t.pattern = 'test/tc_*.rb'
+  t.verbose = true
 end
 
 Rake::GemPackageTask.new(SPEC) do |pkg|
