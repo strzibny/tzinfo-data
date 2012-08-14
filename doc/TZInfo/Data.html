@@ -179,7 +179,11 @@
             <pre><span class="ruby-comment"># File lib/tzinfo-data.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">load_definition</span>(<span class="ruby-identifier">identifier</span>)
       <span class="ruby-identifier">file</span> = <span class="ruby-string">'definitions'</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">SEPARATOR</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">identifier</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
+      <span class="ruby-keyword">begin</span>
+              <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
+              <span class="ruby-identifier">raise</span> <span class="ruby-constant">InvalidTimezoneIdentifier</span>, <span class="ruby-string">'Invalid identifier'</span>
+      <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load_definition-source -->
           
